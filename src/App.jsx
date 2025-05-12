@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import styled from 'styled-components'
+import api from './api'
 
 const Container = styled.div `
   display: flex;
@@ -40,6 +41,7 @@ const Button = styled.button `
   margin-top: 18px;
   cursor: pointer;
   transition: ease 1s;
+  color: blue;
 
  &:hover{
   background: yellow;
@@ -50,21 +52,49 @@ const Button = styled.button `
 `
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  async function HandleLogin(e){
+    e.preventDefault()
+    try {
+
+      const dados = {email, password}
+
+      const login = await api.post('/api/auth/login', {email, password})
+
+      console.log(`TOKEN: ${login.data.token}`)
+
+      return alert("login sucesso!")
+
+      
+    } catch (error) {
+      return alert(error)
+      
+    }
+  }
 
   return (
     <>
       <Container>
-        APP PAGE - LOGIN
+      <h2>
+          APP PAGE - LOGIN
+        </h2>
         <br />
         <br />
-        <form>
-        <Input placeholder='Email'/>
+        <form onSubmit={HandleLogin}>
+        <Input type="email" 
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}  placeholder='Email'/>
         <br />
-        <Input placeholder='Senha'/>
+        <Input 
+        value={password}
+        onChange={(e) => setPassword(e.target.value)} 
+        type="password"
+        placeholder='Senha'/>
         
         <Button type="submit">
-          Logan
+          LOGIN
         </Button>
         </form>
 
