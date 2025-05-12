@@ -4,7 +4,7 @@ const SidebarContainer = styled.div`
     display: flex;
     width: 300px;
     height:93%;
-    background: green;
+    background: #25744d;
     margin-top: 64px;
 
 `

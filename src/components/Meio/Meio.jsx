@@ -12,8 +12,8 @@ const NavBarContainer = styled.div`
 function Meio(){
     return (
        
-         <div style={{background: 'yellow',
-            marginLeft: '-48px',
+         <div style={{background: '#1f6040',
+            marginLeft: '-45px',
             width: '103%', height: '100%'}}>
 MEIO
          </div>

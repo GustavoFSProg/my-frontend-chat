@@ -5,7 +5,7 @@ const NavBarContainer = styled.div`
     display: flex;
     width: 100vw;
     height:4rem;
-    background: orange;
+    background: #194d33;
     margin-left: -300px;
 
 `
