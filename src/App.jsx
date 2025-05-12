@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import styled from 'styled-components'
 import api from './api'
+import { useNavigate } from 'react-router-dom'
 
 const Container = styled.div `
   display: flex;
@@ -55,6 +56,8 @@ function App() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const navigate = useNavigate()
+
   async function HandleLogin(e){
     e.preventDefault()
     try {
@@ -64,6 +67,8 @@ function App() {
       const login = await api.post('/api/auth/login', {email, password})
 
       console.log(`TOKEN: ${login.data.token}`)
+
+      navigate('/home')
 
       return alert("login sucesso!")
 
